@@ -5,10 +5,8 @@ function App() {
   const [windowWidth2, setWindowWidth2] = useState(undefined);
   const [windowWidth3, setWindowWidth3] = useState(undefined);
   const [windowScale, setWindowScale] = useState(1);
-  const using = "innerWidth";
   useEffect(() => {
     const handleResize = () => {
-      const width = window.innerWidth;
       setWindowScale(window.visualViewport.scale);
       setWindowWidth1(`${window.innerWidth}px`);
       setWindowWidth2(`${window.visualViewport.width}px`);
@@ -22,7 +20,7 @@ function App() {
   return (
     <div
       style={{
-        minWidth: windowWidth1,
+        width: "100vw",
         minHeight: "100vh",
         backgroundColor: "teal",
         fontSize: "1.4em",
@@ -36,7 +34,7 @@ function App() {
           justifyContent: "center",
           flexDirection: "column",
           color: "white",
-          minWidth: windowWidth1,
+          width: "100vw",
           minHeight: "64px",
         }}
       >
