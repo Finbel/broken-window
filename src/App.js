@@ -1,14 +1,18 @@
 import { useEffect, useState } from "react";
 
 function App() {
-  const [windowWidth, setWindowWidth] = useState("100vw");
+  const [windowWidth1, setWindowWidth1] = useState(undefined);
+  const [windowWidth2, setWindowWidth2] = useState(undefined);
+  const [windowWidth3, setWindowWidth3] = useState(undefined);
   const [windowScale, setWindowScale] = useState(1);
   const using = "innerWidth";
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
       setWindowScale(window.visualViewport.scale);
-      setWindowWidth(`${width}px`);
+      setWindowWidth1(`${window.innerWidth}px`);
+      setWindowWidth2(`${window.visualViewport.width}px`);
+      setWindowWidth3(`${window.screen.width}px`);
     };
     window.addEventListener("resize", handleResize);
     handleResize();
@@ -18,7 +22,7 @@ function App() {
   return (
     <div
       style={{
-        minWidth: windowWidth,
+        minWidth: windowWidth1,
         minHeight: "100vh",
         backgroundColor: "teal",
         fontSize: "1.4em",
@@ -32,7 +36,7 @@ function App() {
           justifyContent: "center",
           flexDirection: "column",
           color: "white",
-          minWidth: windowWidth,
+          minWidth: windowWidth1,
           minHeight: "64px",
         }}
       >
@@ -70,11 +74,26 @@ function App() {
         >
           my width is 100% and my max-width is 700px
         </div>
-        <p style={{ margin: 6 }}>Using {using}</p>
-        <p style={{ margin: 6 }}>Width</p>
-        <p style={{ margin: 6 }}>{windowWidth}</p>
-        <p style={{ margin: 6 }}>Viewport scale</p>
-        <p style={{ margin: 6 }}>{windowScale}</p>
+        <table>
+          <tbody>
+            <tr>
+              <td style={{ width: 250 }}>innerWidth</td>
+              <td>{windowWidth1}</td>
+            </tr>
+            <tr>
+              <td>visualViewport.width</td>
+              <td>{windowWidth2}</td>
+            </tr>
+            <tr>
+              <td>screen.width</td>
+              <td>{windowWidth3}</td>
+            </tr>
+            <tr>
+              <td>visualViewport.scale</td>
+              <td>{windowScale}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   );
