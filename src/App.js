@@ -20,7 +20,7 @@ function App() {
   return (
     <div
       style={{
-        width: "100vw",
+        width: windowWidth1,
         minHeight: "100vh",
         backgroundColor: "teal",
         fontSize: "1.4em",
@@ -34,7 +34,7 @@ function App() {
           justifyContent: "center",
           flexDirection: "column",
           color: "white",
-          width: "100vw",
+          width: windowWidth1,
           minHeight: "64px",
         }}
       >
